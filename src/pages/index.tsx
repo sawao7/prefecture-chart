@@ -3,6 +3,8 @@ import { GetServerSideProps } from "next";
 
 import Head from "next/head";
 import Image from "next/image";
+
+import React from "react";
 import Chart from "@/components/Chart";
 import styles from "@/styles/Home.module.scss";
 
@@ -11,24 +13,78 @@ type Props = {
 };
 
 const Home: NextPage = (props: Props) => {
-  const dataList = [
+  const API_KEY: any = process.env.NEXT_PUBLIC_API_KEY;
+
+  // グラフ表示用の人口データリスト
+  const [dataList, setDataList] = React.useState<
     {
-      name: "東京都",
-      data: [
-        { year: 2010, value: 13515271 },
-        { year: 2015, value: 13515271 },
-      ],
-    },
-    {
-      name: "北海道",
-      data: [
-        { year: 2010, value: 10515271 },
-        { year: 2015, value: 10515271 },
-      ],
-    },
-  ];
-  const getPeopleData = async (checked: boolean) => {
-    console.log(checked);
+      name: string;
+      data: {
+        year: number;
+        value: number;
+      }[];
+    }[]
+  >([]);
+
+  // URLフォーマット
+  const url =
+    "https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?cityCode=-&prefCode=";
+
+  // コピーを作成
+  let dataListCopy = dataList.slice();
+
+  // 都道府県を選択したときの処理
+  const getPeopleData = async (index: number, name: string, checked: boolean) => {
+    // checkがついている県のみ取得
+    if (checked) {
+      // findIndexでdataListCopyに同じ都道府県名があるかを確認　あったら処理を終了
+      if (dataListCopy.findIndex((value) => value.name === name) !== -1) {
+        return;
+      }
+
+      // URLを作成 indexは+1している
+      const fetchURL = url + (index + 1).toString();
+      // APIを用いてデータを取得
+      await fetch(fetchURL, {
+        headers: {
+          "X-Api-Key": API_KEY,
+        },
+      })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          // エラー処理
+          throw new Error(`There is something wrong`);
+        })
+        .then((data) => {
+          // データのオブジェクト
+          const dataObj = data.result.data[0].data;
+          dataListCopy.push({
+            name: name,
+            data: dataObj,
+          });
+
+          setDataList(dataListCopy);
+        })
+        .catch((err) => {
+          // エラーが発生した場合
+          throw new Error(`There is something wrong`);
+        });
+    }
+    // もしチェックが外れてた場合
+    else {
+      // 都道府県名でがListにあるか indexを返す
+      const indexDelete = dataListCopy.findIndex((value) => value.name === name);
+      // もともとデータがなかったら処理を終了
+      if (indexDelete === -1) {
+        return;
+      }
+
+      // リストから削除
+      dataListCopy.splice(indexDelete, 1);
+      setDataList(dataListCopy);
+    }
   };
   return (
     <div className={styles.container}>
@@ -51,7 +107,7 @@ const Home: NextPage = (props: Props) => {
                   <input
                     id={index.toString()}
                     type="checkbox"
-                    onChange={(e) => getPeopleData(e.target.checked)}
+                    onChange={(e) => getPeopleData(index, name, e.target.checked)}
                   />
                   <label htmlFor={index.toString()}>{name}</label>
                 </div>
