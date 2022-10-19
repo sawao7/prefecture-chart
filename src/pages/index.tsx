@@ -5,6 +5,8 @@ import Image from "next/image";
 
 import React from "react";
 import Chart from "@/components/Chart";
+
+import Header from "@/components/organisms/Header";
 import styles from "@/styles/Home.module.scss";
 
 type Props = {
@@ -93,9 +95,7 @@ const Home: NextPage<Props> = (props: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className={styles.header}>
-        <div className={styles.title}>都道府県別人口推移チャート</div>
-      </header>
+      <Header />
       <main className={styles.main}>
         <div className={styles.contents}>
           <p className={styles.title_mini}>都道府県</p>

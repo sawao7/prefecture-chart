@@ -1,21 +1,8 @@
-// valiables
-$white: rgb(255, 255, 255);
-$black: rgb(0, 0, 0);
-$gray: rgb(196, 196, 196);
+@import "@/styles/variable.scss";
 
 .container {
   background-color: $white;
   color: $black;
-}
-
-.header {
-  background-color: $gray;
-  padding: 15px 0;
-}
-.title {
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
 }
 
 .main {
@@ -58,15 +45,7 @@ $gray: rgb(196, 196, 196);
   border: 1px solid $black;
 }
 
-
 @media (max-width: 600px) {
-  .header {
-    padding: 0px;
-  }
-  .title {
-    font-size: 20px;
-  }
-
   .main {
     padding: 0px;
   }
@@ -103,7 +82,7 @@ $gray: rgb(196, 196, 196);
   .checkbox_label {
     font-size: 13px;
     margin: 0;
-		margin-bottom:2px;
+    margin-bottom: 2px;
     cursor: pointer;
   }
 

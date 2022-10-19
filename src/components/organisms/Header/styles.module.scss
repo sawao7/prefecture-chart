@@ -1,0 +1,12 @@
+@import "@/styles/variable.scss";
+
+.header {
+  background-color: $gray;
+  padding: 15px 0;
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 0px;
+  }
+}
