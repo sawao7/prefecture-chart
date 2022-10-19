@@ -11,6 +11,22 @@ type Props = {
 };
 
 const Home: NextPage = (props: Props) => {
+  const dataList = [
+    {
+      name: "東京都",
+      data: [
+        { year: 2010, value: 13515271 },
+        { year: 2015, value: 13515271 },
+      ],
+    },
+    {
+      name: "北海道",
+      data: [
+        { year: 2010, value: 10515271 },
+        { year: 2015, value: 10515271 },
+      ],
+    },
+  ];
   const getPeopleData = async (checked: boolean) => {
     console.log(checked);
   };
@@ -42,7 +58,9 @@ const Home: NextPage = (props: Props) => {
               );
             })}
           </div>
-          <Chart />
+          <div>
+            <Chart dataList={dataList} />
+          </div>
         </div>
       </main>
     </div>

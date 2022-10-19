@@ -2,17 +2,25 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import React from "react";
 
+type Props = {
+  dataList: {
+    name: string;
+    data: {
+      year: number;
+      value: number;
+    }[];
+  }[];
+};
+
 const Chart = (props: Props) => {
   const type = "line";
-  const options = {
-    type: type,
-    data: [
-      [1000, 1],
-      [1100, 2],
-      [1200, 3],
-      [1300, 4],
-    ],
-  };
+  const options = props.dataList.map((item) => {
+    return {
+      type: type,
+      name: item.name,
+      data: item.data.map((item) => [item.year, item.value]),
+    };
+  });
 
   return (
     <HighchartsReact
