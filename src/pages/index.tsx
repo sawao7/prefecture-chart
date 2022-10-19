@@ -3,14 +3,16 @@ import { GetServerSideProps } from "next";
 
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import styles from "@/styles/Home.module.scss";
 
 type Props = {
   prefectures: string[];
 };
 
 const Home: NextPage = (props: Props) => {
-  console.log(props);
+  const getPeopleData = async (checked: boolean) => {
+    console.log(checked);
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -19,7 +21,28 @@ const Home: NextPage = (props: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}></main>
+      <header>
+        <div>都道府県別人口推移チャート</div>
+      </header>
+      <main>
+        <div>
+          <p>都道府県</p>
+          <div>
+            {props.prefectures.map((name, index) => {
+              return (
+                <div className={styles.checkbox} key={index}>
+                  <input
+                    id={index.toString()}
+                    type="checkbox"
+                    onChange={(e) => getPeopleData(e.target.checked)}
+                  />
+                  <label htmlFor={index.toString()}>{name}</label>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </main>
     </div>
   );
 };
