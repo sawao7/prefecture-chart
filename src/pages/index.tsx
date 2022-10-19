@@ -3,6 +3,7 @@ import { GetServerSideProps } from "next";
 
 import Head from "next/head";
 import Image from "next/image";
+import Chart from "@/components/Chart";
 import styles from "@/styles/Home.module.scss";
 
 type Props = {
@@ -41,6 +42,7 @@ const Home: NextPage = (props: Props) => {
               );
             })}
           </div>
+          <Chart />
         </div>
       </main>
     </div>
