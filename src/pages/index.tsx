@@ -1,9 +1,16 @@
 import type { NextPage } from "next";
+import { GetServerSideProps } from "next";
+
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
-const Home: NextPage = () => {
+type Props = {
+  prefectures: string[];
+};
+
+const Home: NextPage = (props: Props) => {
+  console.log(props);
   return (
     <div className={styles.container}>
       <Head>
@@ -15,6 +22,42 @@ const Home: NextPage = () => {
       <main className={styles.main}></main>
     </div>
   );
+};
+
+// サーバー側で都道府県の情報は取得
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const API_KEY: any = process.env.NEXT_PUBLIC_API_KEY;
+  let prefectures: string[] = [];
+
+  const urlPrefectures = "https://opendata.resas-portal.go.jp/api/v1/prefectures";
+
+  await fetch(urlPrefectures, {
+    headers: {
+      "X-API-KEY": API_KEY,
+    },
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      throw new Error(`Some Error`);
+    })
+    .then((data) => {
+      prefectures = data.result.map(
+        (item: { prefCode: number; prefName: string }) => item.prefName,
+      );
+    })
+    .catch((err) => {
+      // エラーが発生した場合
+      console.error(err);
+    });
+  const props: Props = {
+    prefectures: prefectures,
+  };
+
+  return {
+    props: props,
+  };
 };
 
 export default Home;
