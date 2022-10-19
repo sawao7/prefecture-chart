@@ -1,20 +1,59 @@
+// valiables
+$white: rgb(255, 255, 255);
+$black: rgb(0, 0, 0);
+$gray: rgb(196, 196, 196);
+
 .container {
-  padding: 0 2rem;
+  background-color: $white;
+  color: $black;
+}
+
+.header {
+  background-color: $gray;
+  padding: 15px 0;
+}
+.title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 0 80px;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+.contents {
+  padding: 0 30px;
+  padding-bottom: 30px;
+}
+
+.title_mini {
+  font-size: 20px;
+}
+
+.checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 0;
+}
+
+.checkbox {
+  width: 122px;
+  display: flex;
+}
+
+.checkbox_box {
+  cursor: pointer;
+  background-color: $white;
+  border: 2px $black solid;
+}
+
+.checkbox_label {
+  margin: 0 auto;
+  margin-left: 0;
+  cursor: pointer;
+}
+
+.chart_content {
+  border: 1px solid $black;
 }

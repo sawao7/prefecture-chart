@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import { GetServerSideProps } from "next";
-
 import Head from "next/head";
 import Image from "next/image";
 
@@ -12,7 +11,7 @@ type Props = {
   prefectures: string[];
 };
 
-const Home: NextPage = (props: Props) => {
+const Home: NextPage<Props> = (props: Props) => {
   const API_KEY: any = process.env.NEXT_PUBLIC_API_KEY;
 
   // グラフ表示用の人口データリスト
@@ -94,29 +93,33 @@ const Home: NextPage = (props: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
-        <div>都道府県別人口推移チャート</div>
+      <header className={styles.header}>
+        <div className={styles.title}>都道府県別人口推移チャート</div>
       </header>
-      <main>
-        <div>
-          <p>都道府県</p>
-          <div>
+      <main className={styles.main}>
+        <div className={styles.contents}>
+          <p className={styles.title_mini}>都道府県</p>
+          <div className={styles.checkboxes}>
             {props.prefectures.map((name, index) => {
               return (
                 <div className={styles.checkbox} key={index}>
                   <input
                     id={index.toString()}
+                    className={styles.checkbox_box}
                     type="checkbox"
                     onChange={(e) => getPeopleData(index, name, e.target.checked)}
                   />
-                  <label htmlFor={index.toString()}>{name}</label>
+                  <label className={styles.checkbox_label} htmlFor={index.toString()}>
+                    {name}
+                  </label>
                 </div>
               );
             })}
           </div>
-          <div>
-            <Chart dataList={dataList} />
-          </div>
+        </div>
+        {/* Chart Component */}
+        <div className={styles.chart_content}>
+          <Chart dataList={dataList} />
         </div>
       </main>
     </div>
