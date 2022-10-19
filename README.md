@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a coding assignment by Yumemi Inc.
 
-## Getting Started
+## Overview
 
-First, run the development server:
+You can access this [Link]().
+
+This is an application that show the graph about population of each prefectures.
+
+## Getting Started for developers
+
+First, clone this git repository to your local environment:
 
 ```bash
-npm run dev
-# or
+git clone <REPOSITORYNAME>
+
+```
+
+Second, install libraries using package.json:(please use `yarn` not `npm`)
+
+```bash
+yarn install
+```
+
+Thirs, set **environmental variable**;
+You have to get API_KEY by [RESAS API](https://opendata.resas-portal.go.jp/)
+You can create `.env.local`, and edit it.
+If you want to see a sample of how to write it, see `.env.template`.
+
+```bash
+NEXT_PUBLIC_API_KEY=<APIKEY>
+```
+
+Finally, run the development server:
+
+```bash
 yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `pages/index.tsx` or `components/*`.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Directory structure under src/
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+This project uses [atomic design](https://bradfrost.com/blog/post/atomic-web-design/) for directory organization.
 
-## Learn More
+##### `components/ – Presentational components`
 
-To learn more about Next.js, take a look at the following resources:
+Place the UI component (.tsx) that defines the "look and feel".
+This component has no logic, and draws purely from the props passed to it.
+The directory below can be further hierarchized by category.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+##### `containers/ – Container components`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Place a component (.tsx) that defines the "behavior".
+It contains the logic for fetching data through hook functions, etc., saving and changing states, etc., and finally passing the data to be displayed as a props object in another component.
+The directory below can be further hierarchized by category.
 
-## Deploy on Vercel
+##### `hooks/ – Custom hooks`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Place custom React hooks.
+The application logic is not written in the components, but implemented as hook functions as much as possible.
+Basically, hook functions are called from components under the comtainers directory or from another hook function.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+##### `pages/ – Page components`
+
+Place the Next.js page component (.tsx), as well as \_app.tsx and \_document.tsx
+Files (xxx.tsx) will be loaded according to the URL path when the website is accessed.
+This corresponds to Templates (Pages) in Atomic Design.
