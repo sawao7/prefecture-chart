@@ -14,10 +14,6 @@
   padding-bottom: 30px;
 }
 
-.title_mini {
-  font-size: 20px;
-}
-
 .checkboxes {
   display: flex;
   flex-wrap: wrap;
@@ -54,12 +50,6 @@
     padding: 0 5px;
     padding-bottom: 5px;
     border-bottom: 1px solid $gray;
-  }
-
-  .title_mini {
-    font-size: 15px;
-    margin: 0;
-    margin-top: 10px;
   }
 
   .checkboxes {

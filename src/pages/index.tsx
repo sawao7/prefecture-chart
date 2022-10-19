@@ -6,7 +6,9 @@ import Image from "next/image";
 import React from "react";
 import Chart from "@/components/Chart";
 
+import MainTitle from "@/components/atoms/MainTitle";
 import Header from "@/components/organisms/Header";
+
 import styles from "@/styles/Home.module.scss";
 
 type Props = {
@@ -98,7 +100,7 @@ const Home: NextPage<Props> = (props: Props) => {
       <Header />
       <main className={styles.main}>
         <div className={styles.contents}>
-          <p className={styles.title_mini}>都道府県</p>
+          <MainTitle />
           <div className={styles.checkboxes}>
             {props.prefectures.map((name, index) => {
               return (
