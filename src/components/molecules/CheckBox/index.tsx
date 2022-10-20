@@ -6,13 +6,12 @@ type Props = {
   key: Number;
   name: string;
   index: Number;
-  getPeopleData: Function;
 };
 
 const CheckBox = (props: Props) => {
   return (
     <div className={styles.checkbox} key={props.key}>
-      <Input index={props.index} name={props.name} getPeopleData={props.getPeopleData} />
+      <Input index={props.index} name={props.name} />
       <Label index={props.index} name={props.name} />
     </div>
   );
