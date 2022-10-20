@@ -3,14 +3,10 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
-import React from "react";
-import Chart from "@/components/Chart";
-
-import MainTitle from "@/components/atoms/MainTitle";
 import Header from "@/components/organisms/Header";
 
 import Main from "@/components/organisms/Main";
-import styles from "@/styles/Home.module.scss";
+import styles from "@/styles/index.module.scss";
 
 type Props = {
   prefectures: string[];
