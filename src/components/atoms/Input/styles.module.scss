@@ -1,0 +1,15 @@
+@import "@/styles/variable.scss";
+
+.checkbox_box {
+  cursor: pointer;
+  background-color: $white;
+  border: 2px $black solid;
+}
+
+@media (max-width: 600px) {
+  .checkbox_box {
+    cursor: pointer;
+    background-color: $white;
+    border: 2px $black solid;
+  }
+}

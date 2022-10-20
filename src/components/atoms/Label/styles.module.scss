@@ -1,0 +1,14 @@
+.checkbox_label {
+  margin: 0 auto;
+  margin-left: 0;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .checkbox_label {
+    font-size: 13px;
+    margin: 0;
+    margin-bottom: 2px;
+    cursor: pointer;
+  }
+}
