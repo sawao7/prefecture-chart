@@ -1,0 +1,13 @@
+@import "@/styles/variable.scss";
+
+.checkbox {
+  width: 122px;
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .checkbox {
+    width: 98px;
+    display: flex;
+  }
+}
