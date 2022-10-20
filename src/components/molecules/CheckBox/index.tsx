@@ -4,7 +4,7 @@ import styles from "@/components/molecules/CheckBox/styles.module.scss";
 
 type Props = {
   name: string;
-  index: Number;
+  index: number;
 };
 
 const CheckBox = (props: Props) => {

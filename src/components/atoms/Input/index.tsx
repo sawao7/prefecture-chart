@@ -1,15 +1,15 @@
 import styles from "@/components/atoms/Input/styles.module.scss";
-import { useDataContext } from "@/hooks/useDataContext";
+import { dataValueType, useDataContext } from "@/hooks/useDataContext";
 
 type Props = {
-  index: Number;
+  index: number;
   name: string;
 };
 
 const Input = (props: Props) => {
   const API_KEY: any = process.env.NEXT_PUBLIC_API_KEY;
 
-  const { dataList, setDataList } = useDataContext();
+  const { dataList, setDataList }: any = useDataContext();
   // URLフォーマット
   const url =
     "https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?cityCode=-&prefCode=";
@@ -22,7 +22,7 @@ const Input = (props: Props) => {
     // checkがついている県のみ取得
     if (checked) {
       // findIndexでdataListCopyに同じ都道府県名があるかを確認　あったら処理を終了
-      if (dataListCopy.findIndex((value) => value.name === name) !== -1) {
+      if (dataListCopy.findIndex((value: dataValueType) => value.name === name) !== -1) {
         return;
       }
 
@@ -59,7 +59,7 @@ const Input = (props: Props) => {
     // もしチェックが外れてた場合
     else {
       // 都道府県名でがListにあるか indexを返す
-      const indexDelete = dataListCopy.findIndex((value) => value.name === name);
+      const indexDelete = dataListCopy.findIndex((value: dataValueType) => value.name === name);
       // もともとデータがなかったら処理を終了
       if (indexDelete === -1) {
         return;

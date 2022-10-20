@@ -4,7 +4,7 @@ import MainTitle from "@/components/atoms/MainTitle";
 import CheckBoxes from "@/components/organisms/CheckBoxes";
 import styles from "@/components/organisms/Main/styles.module.scss";
 
-import { useDataContext } from "@/hooks/useDataContext";
+import { dataContextType, useDataContext } from "@/hooks/useDataContext";
 
 type Props = {
   prefectures: string[];
@@ -12,7 +12,7 @@ type Props = {
 
 const Main = (props: Props) => {
   // グラフ表示用の人口データリスト
-  const { dataList, setDataList } = useDataContext();
+  const { dataList, setDataList }: dataContextType = useDataContext();
 
   return (
     <main className={styles.main}>
