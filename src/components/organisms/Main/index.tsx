@@ -1,9 +1,14 @@
 import React from "react";
-import Chart from "@/components/Chart";
+import Chart from "@/components/atoms/Chart";
 import MainTitle from "@/components/atoms/MainTitle";
+import CheckBoxes from "@/components/organisms/CheckBoxes";
 import styles from "@/components/organisms/Main/styles.module.scss";
 
-const Main = (props) => {
+type Props = {
+  prefectures: string[];
+};
+
+const Main = (props: Props) => {
   const API_KEY: any = process.env.NEXT_PUBLIC_API_KEY;
 
   // グラフ表示用の人口データリスト
@@ -81,25 +86,8 @@ const Main = (props) => {
     <main className={styles.main}>
       <div className={styles.contents}>
         <MainTitle />
-        <div className={styles.checkboxes}>
-          {props.prefectures.map((name, index) => {
-            return (
-              <div className={styles.checkbox} key={index}>
-                <input
-                  id={index.toString()}
-                  className={styles.checkbox_box}
-                  type="checkbox"
-                  onChange={(e) => getPeopleData(index, name, e.target.checked)}
-                />
-                <label className={styles.checkbox_label} htmlFor={index.toString()}>
-                  {name}
-                </label>
-              </div>
-            );
-          })}
-        </div>
+        <CheckBoxes prefectures={props.prefectures} getPeopleData={getPeopleData} />
       </div>
-      {/* Chart Component */}
       <div className={styles.chart_content}>
         <Chart dataList={dataList} />
       </div>
