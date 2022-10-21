@@ -67,3 +67,8 @@ Basically, hook functions are called from components under the comtainers direct
 Place the Next.js page component (.tsx), as well as \_app.tsx and \_document.tsx
 Files (xxx.tsx) will be loaded according to the URL path when the website is accessed.
 This corresponds to Templates (Pages) in Atomic Design.
+
+##### `__test__/ – Test Folder`
+
+This project uses Jest and React-testing-library for doing test.
+If you know it more, please look [this NextJs Test Document](https://nextjs.org/docs/testing#setting-up-jest-with-the-rust-compiler)
