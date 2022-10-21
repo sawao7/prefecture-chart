@@ -1,22 +1,13 @@
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import React from "react";
+import { useDataContext } from "@/hooks/useDataContext";
 
-type Props = {
-  dataList: {
-    name: string;
-    data: {
-      year: number;
-      value: number;
-    }[];
-  }[];
-};
-
-const Chart = (props: Props) => {
-  const type = "line";
-  const options = props.dataList.map((item) => {
+const Chart = () => {
+  const { dataList, setDataList } = useDataContext();
+  const options = dataList.map((item) => {
     return {
-      type: type,
+      type: "line",
       name: item.name,
       data: item.data.map((item) => [item.year, item.value]),
     };

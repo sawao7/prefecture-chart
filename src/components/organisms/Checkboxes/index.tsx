@@ -1,9 +1,6 @@
 import CheckBox from "@/components/molecules/CheckBox";
 import styles from "@/components/organisms/CheckBoxes/styles.module.scss";
-
-type Props = {
-  prefectures: string[];
-};
+import { Props } from "@/containers/organisms/CheckBoxes";
 
 const CheckBoxes = (props: Props) => {
   return (

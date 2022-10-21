@@ -1,10 +1,6 @@
 import styles from "@/components/atoms/Input/styles.module.scss";
+import { Props } from "@/containers/atoms/Input";
 import { dataValueType, useDataContext } from "@/hooks/useDataContext";
-
-type Props = {
-  index: number;
-  name: string;
-};
 
 const Input = (props: Props) => {
   const API_KEY: any = process.env.NEXT_PUBLIC_API_KEY;

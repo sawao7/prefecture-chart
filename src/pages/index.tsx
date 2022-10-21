@@ -57,6 +57,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // エラーが発生した場合
       console.error(err);
     });
+
   const props: Props = {
     prefectures: prefectures,
   };

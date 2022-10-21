@@ -4,11 +4,8 @@ import MainTitle from "@/components/atoms/MainTitle";
 import CheckBoxes from "@/components/organisms/CheckBoxes";
 import styles from "@/components/organisms/Main/styles.module.scss";
 
+import { Props } from "@/containers/organisms/Main";
 import { dataContextType, useDataContext } from "@/hooks/useDataContext";
-
-type Props = {
-  prefectures: string[];
-};
 
 const Main = (props: Props) => {
   // グラフ表示用の人口データリスト
@@ -21,7 +18,7 @@ const Main = (props: Props) => {
         <CheckBoxes prefectures={props.prefectures} />
       </div>
       <div className={styles.chart_content}>
-        <Chart dataList={dataList} />
+        <Chart />
       </div>
     </main>
   );
