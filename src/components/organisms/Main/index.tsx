@@ -8,9 +8,6 @@ import { Props } from "@/containers/organisms/Main";
 import { dataContextType, useDataContext } from "@/hooks/useDataContext";
 
 const Main: React.FC<Props> = (props: Props) => {
-  // グラフ表示用の人口データリスト
-  const { dataList, setDataList }: dataContextType = useDataContext();
-
   return (
     <main className={styles.main}>
       <div className={styles.contents}>
