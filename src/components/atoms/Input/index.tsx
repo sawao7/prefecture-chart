@@ -1,11 +1,12 @@
+import React from "react";
 import styles from "@/components/atoms/Input/styles.module.scss";
 import { Props } from "@/containers/atoms/Input";
-import { dataValueType, useDataContext } from "@/hooks/useDataContext";
+import { dataContextType, dataValueType, useDataContext } from "@/hooks/useDataContext";
 
-const Input = (props: Props) => {
+const Input: React.FC<Props> = (props: Props) => {
   const API_KEY: any = process.env.NEXT_PUBLIC_API_KEY;
 
-  const { dataList, setDataList }: any = useDataContext();
+  const { dataList, setDataList }: dataContextType = useDataContext();
   // URLフォーマット
   const url =
     "https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?cityCode=-&prefCode=";

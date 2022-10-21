@@ -1,3 +1,4 @@
+import React from "react";
 import Input from "@/components/atoms/Input";
 import Label from "@/components/atoms/Label";
 import styles from "@/components/molecules/CheckBox/styles.module.scss";
@@ -7,7 +8,7 @@ type Props = {
   index: number;
 };
 
-const CheckBox = (props: Props) => {
+const CheckBox: React.FC<Props> = (props: Props) => {
   return (
     <div className={styles.checkbox}>
       <Input index={props.index} name={props.name} />

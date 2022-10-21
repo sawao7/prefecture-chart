@@ -7,7 +7,7 @@ import styles from "@/components/organisms/Main/styles.module.scss";
 import { Props } from "@/containers/organisms/Main";
 import { dataContextType, useDataContext } from "@/hooks/useDataContext";
 
-const Main = (props: Props) => {
+const Main: React.FC<Props> = (props: Props) => {
   // グラフ表示用の人口データリスト
   const { dataList, setDataList }: dataContextType = useDataContext();
 

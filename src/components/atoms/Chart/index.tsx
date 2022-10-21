@@ -1,10 +1,10 @@
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import React from "react";
-import { useDataContext } from "@/hooks/useDataContext";
+import { dataContextType, useDataContext } from "@/hooks/useDataContext";
 
-const Chart = () => {
-  const { dataList, setDataList } = useDataContext();
+const Chart: React.FC = () => {
+  const { dataList, setDataList }: dataContextType = useDataContext();
   const options = dataList.map((item) => {
     return {
       type: "line",
