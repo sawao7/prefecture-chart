@@ -1,8 +1,8 @@
 import React from "react";
-import Chart from "@/components/atoms/Chart";
 import MainTitle from "@/components/atoms/MainTitle";
 import CheckBoxes from "@/components/organisms/CheckBoxes";
 import styles from "@/components/organisms/Main/styles.module.scss";
+import Chart from "@/containers/atoms/Chart";
 
 import { Props } from "@/containers/organisms/Main";
 import { dataContextType, useDataContext } from "@/hooks/useDataContext";

@@ -1,18 +1,15 @@
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import React from "react";
-import { dataContextType, useDataContext } from "@/hooks/useDataContext";
 
-const Chart: React.FC = () => {
-  const { dataList, setDataList }: dataContextType = useDataContext();
-  const options = dataList.map((item) => {
-    return {
-      type: "line",
-      name: item.name,
-      data: item.data.map((item) => [item.year, item.value]),
-    };
-  });
+type Props = {
+  options: {
+    type: string;
+    name: string;
+    data: number[][];
+  }[];
+};
 
+const ChartPresenter: React.FC<Props> = (props: Props) => {
   return (
     <HighchartsReact
       highcharts={Highcharts}
@@ -30,10 +27,10 @@ const Chart: React.FC = () => {
             text: "人口数",
           },
         },
-        series: options,
+        series: props.options,
       }}
     />
   );
 };
 
-export default Chart;
+export default ChartPresenter;
