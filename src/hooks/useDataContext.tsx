@@ -44,7 +44,7 @@ export function useDataContext() {
   return useContext(dataContext);
 }
 
-export const CountProvider = ({ children }: any) => {
+export const DataListProvider = ({ children }: any) => {
   const [dataList, setDataList] = useState<dataListType>([]);
 
   const value = {
