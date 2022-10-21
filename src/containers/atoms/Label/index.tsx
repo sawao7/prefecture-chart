@@ -1,4 +1,4 @@
 export type Props = {
-  index: Number;
+  index: number;
   name: string;
 };
