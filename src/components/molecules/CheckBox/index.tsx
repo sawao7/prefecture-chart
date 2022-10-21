@@ -1,7 +1,7 @@
 import React from "react";
-import Input from "@/components/atoms/Input";
 import Label from "@/components/atoms/Label";
 import styles from "@/components/molecules/CheckBox/styles.module.scss";
+import Input from "@/containers/atoms/Input";
 
 type Props = {
   name: string;
