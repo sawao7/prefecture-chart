@@ -14,5 +14,13 @@
         }
       }
     ]
+  },
+
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "@/*": "./src/*"
+      }
+    }
   }
 }
