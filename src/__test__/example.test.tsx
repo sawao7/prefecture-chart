@@ -17,9 +17,6 @@ describe("Atoms", () => {
   test("Label", () => {
     render(<Label index={1} name="テスト" />);
   });
-  // test("Chart", () => {
-  //   render(<Chart />);
-  // });
   test("ChartPresenter", () => {
     const options = {
       type: "line",
@@ -31,12 +28,6 @@ describe("Atoms", () => {
     };
     render(<ChartPresenter options={options} />);
   });
-  // test("InputPresenter", () => {
-  //   const index = 1;
-  //   const name = "北海道";
-  //   const getPeopleData =
-  //   render(<InputPresenter />);
-  // });
   test("MainTitle", () => {
     render(<MainTitle />);
   });
@@ -45,26 +36,10 @@ describe("Atoms", () => {
   });
 });
 
-// describe("Molecules", () => {
-//   test("CheckBox", () => {
-//     const name = "テスト";
-//     const index = 1;
-//     render(<CheckBox name={name} index={index} />);
-//   });
-// });
-
 describe("Organisms", () => {
-  // test("CheckBoxes", () => {
-  //   const prefectures = ["北海道", "東京都"];
-  //   render(<CheckBoxes prefectures={prefectures}/>);
-  // });
   test("Header", () => {
     render(<Header />);
   });
-  // test("Main", () => {
-  //   const prefectures = ["北海道", "東京都"];
-  //   render(<Main prefectures={prefectures} />);
-  // });
 });
 
 describe("Pages", () => {
